@@ -50,6 +50,8 @@
 DHT12 dht12;
 SHT3X sht30;
 
+#define HTTPCLIENT_DEFAULT_TCP_TIMEOUT (120000)
+
 String M5NSversion("2020051202");
 
 // The UDP library class
@@ -1973,7 +1975,7 @@ void setup() {
     msStart = millis();
 
     // update glycemia now
-    msCount = msStart-16000;
+    msCount = msStart-160000;
 }
 
 // the loop routine runs over and over again forever
@@ -1984,7 +1986,7 @@ void loop(){
   buttons_test();
 
   // update glycemia every 15s
-  if(millis()-msCount>15000) {
+  if(millis()-msCount>120000) {
     /* if(dispPage==2)
       M5.Lcd.drawLine(osx, osy, 160, 111, TFT_BLACK); // erase seconds hand while updating data
     */
